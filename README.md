@@ -1,5 +1,5 @@
 # readability-selenium
-Use readability and Selenium to extract the useful text from a web page.
+Use Readability.js and Selenium to extract the useful text from a web page.
 
 After trying many options, I found that solutions that try to do this without firing up a real web browser fail on too many sites that use lots of JavaScript to load pages. To work on the real web, I needed to just automate a real web browser.
 
