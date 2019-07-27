@@ -3,6 +3,10 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setuptools.setup(
     name="readability-selenium",
     version="0.0.1",
@@ -13,6 +17,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://https://github.com/mattblaha/readability-selenium",
     packages=setuptools.find_packages(),
+    install_requires = requirements,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
