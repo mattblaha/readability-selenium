@@ -22,7 +22,7 @@ class Reader:
   def __del__(self):
     self.driver.quit()
 
-  def get_url_dict(self,url):
+  def get_readable_dict(self,url):
     self.driver.get(url)
     sleep(3)
     script_result = self.driver.execute_script(self.script)
