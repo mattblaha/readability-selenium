@@ -16,15 +16,19 @@ class Reader:
     self.script += """
     var documentClone = document.cloneNode(true);
     var article = new Readability(documentClone).parse();
-    return article.content;
+    return [article.content, article.byline];
     """
 
   def __del__(self):
     self.driver.quit()
 
-  def get_url(self,url):
+  def get_readable_dict(self,url):
     self.driver.get(url)
     sleep(3)
-    content = self.driver.execute_script(self.script)
-    return html2text.html2text(content)
+    script_result = self.driver.execute_script(self.script)
+    content = html2text.html2text(script_result[0])
+    byline  = html2text.html2text(script_result[1])
+    return {'content': content, 'byline':byline}
 
+  def get_url(self,url):
+    return self.get_url_dict(url)['content']
