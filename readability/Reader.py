@@ -30,5 +30,7 @@ class Reader:
     byline  = html2text.html2text(script_result[1])
     return {'content': content, 'byline':byline}
 
-  def get_url(self,url):
-    return self.get_url_dict(url)['content']
+  def get_readable(self,url):
+    return self.get_readable_dict(url)['content']
+
+  get_url = get_readable
