@@ -25,10 +25,10 @@ class Reader:
   def get_url_dict(self,url):
     self.driver.get(url)
     sleep(3)
-    content = html2text.html2text(self.driver.execute_script(self.script)[0])
-    byline  = html2text.html2text(self.driver.execute_script(self.script)[1])
+    script_result = self.driver.execute_script(self.script)
+    content = html2text.html2text(script_result[0])
+    byline  = html2text.html2text(script_result[1])
     return {'content': content, 'byline':byline}
 
   def get_url(self,url):
     return self.get_url_dict(url)['content']
-
