@@ -27,7 +27,10 @@ class Reader:
     sleep(3)
     script_result = self.driver.execute_script(self.script)
     content = html2text.html2text(script_result[0])
-    byline  = html2text.html2text(script_result[1]).rstrip()
+    try:
+        byline  = html2text.html2text(script_result[1]).rstrip()
+    except:
+        byline = "Unknown"
     return {'content': content, 'byline':byline}
 
   def get_readable(self,url):

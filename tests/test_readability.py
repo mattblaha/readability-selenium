@@ -2,11 +2,16 @@ import unittest
 from readability import Reader
 
 class MockDriver():
+    url = ""
     def get(self,url):
+        self.url = url
         return True
 
     def execute_script(self,script):
-        return ['<body>Article text</body>', 'Matt Blaha']
+        if self.url == "http://www.example.com/no-author/":
+            return ['<body>Article text</body>', None]
+        else:
+            return ['<body>Article text</body>', 'Matt Blaha']
 
     def quit(self):
         return True
@@ -18,6 +23,13 @@ class TestReadability(unittest.TestCase):
         reader = Reader(driver,readability_js="tests/Readability.js")
         dict = reader.get_readable_dict("http://www.example.com")
         self.assertEqual(dict["byline"], 'Matt Blaha')
+        self.assertEqual(dict["content"], 'Article text\n\n')
+
+    def test_get_readable_no_author(self):
+        driver = MockDriver()
+        reader = Reader(driver,readability_js="tests/Readability.js")
+        dict = reader.get_readable_dict("http://www.example.com/no-author/")
+        self.assertEqual(dict["byline"], 'Unknown')
         self.assertEqual(dict["content"], 'Article text\n\n')
 
     def test_get_url(self):
