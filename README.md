@@ -9,6 +9,6 @@ To run the example, just clone the repo, place your own copy of Readability.js a
 
     python example.py https://example.com/some/article/
 
-The simplest way I know of to setup a Selenium server that will work with the example is with docker:
+The simplest way I know of to setup a Selenium server that will work with the example is with docker (or podman):
 
-    docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-firefox:3.141.59-radium
+    docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-firefox:latest
