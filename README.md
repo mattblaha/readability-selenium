@@ -7,8 +7,12 @@ This will inject **[Readability.js](https://github.com/mozilla/readability)** in
 
 To run the example, just clone the repo, place your own copy of Readability.js alongside example.py, and run:
 
-    python example.py https://example.com/some/article/
+```
+    python example.py https://github.com/mattblaha/readability-selenium
+```
 
 The simplest way I know of to setup a Selenium server that will work with the example is with docker (or podman):
 
-    docker run -d -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-firefox:latest
+```
+    docker run -p 4444:4444 -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
+```
