@@ -19,9 +19,6 @@ class Reader:
     return [article.content, article.byline];
     """
 
-  def __del__(self):
-    self.driver.quit()
-
   def get_readable_dict(self,url):
     self.driver.get(url)
     sleep(3)
