@@ -1,4 +1,4 @@
-from time import sleep
+import time
 import html2text
 
 
@@ -20,15 +20,18 @@ class Reader:
     """
 
   def get_readable_dict(self,url):
+    start = time.perf_counter()
     self.driver.get(url)
-    sleep(3)
+    time.sleep(3)
     script_result = self.driver.execute_script(self.script)
     content = html2text.html2text(script_result[0])
     try:
         byline  = html2text.html2text(script_result[1]).rstrip()
     except:
         byline = "Unknown"
-    return {'content': content, 'byline':byline}
+    end = time.perf_counter()
+    return {'content': content, 'byline':byline,
+        'time': end - start}
 
   def get_readable(self,url):
     return self.get_readable_dict(url)['content']
