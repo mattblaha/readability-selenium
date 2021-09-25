@@ -36,4 +36,5 @@ class Reader:
   def get_readable(self,url):
     return self.get_readable_dict(url)['content']
 
+  # just an alias for compatibility, accidental change broke tests
   get_url = get_readable
