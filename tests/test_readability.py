@@ -9,9 +9,9 @@ class MockDriver():
 
     def execute_script(self,script):
         if self.url == "http://www.example.com/no-author/":
-            return ['<body>Article text</body>', None]
+            return ['Article text\n\n', None]
         else:
-            return ['<body>Article text</body>', 'Matt Blaha']
+            return ['Article text\n\n', 'Matt Blaha']
 
     def quit(self):
         return True

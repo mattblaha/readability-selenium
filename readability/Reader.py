@@ -1,6 +1,4 @@
 import time
-import html2text
-
 
 class Reader:
 
@@ -16,7 +14,7 @@ class Reader:
     self.script += """
     var documentClone = document.cloneNode(true);
     var article = new Readability(documentClone).parse();
-    return [article.content, article.byline];
+    return [article.textContent, article.byline];
     """
 
   def get_readable_dict(self,url):
@@ -24,11 +22,8 @@ class Reader:
     self.driver.get(url)
     time.sleep(3)
     script_result = self.driver.execute_script(self.script)
-    content = html2text.html2text(script_result[0])
-    try:
-        byline  = html2text.html2text(script_result[1]).rstrip()
-    except:
-        byline = "Unknown"
+    content = script_result[0]
+    byline  = script_result[1] if script_result[1] else "Unknown"
     end = time.perf_counter()
     return {'content': content, 'byline':byline,
         'time': end - start}
