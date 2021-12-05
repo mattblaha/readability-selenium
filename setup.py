@@ -9,7 +9,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name="readability-selenium",
-    version="0.0.1",
+    version="0.0.4",
     author="Matt Blaha",
     author_email="github@mattblaha.com",
     description="Extract output of Readability.js with Selenium",

@@ -1,5 +1,5 @@
 import unittest
-from readability import Reader
+from readability_selenium import Reader
 
 class MockDriver():
     url = ""
