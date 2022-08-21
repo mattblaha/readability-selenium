@@ -12,7 +12,7 @@ options.headless = True
 
 driver = webdriver.Remote(
   command_executor='http://localhost:4444/wd/hub',
-  desired_capabilities=options.to_capabilities())
+  options = options)
 
 # to supply a full path to Readability.js, do this
 #js = open("/tmp/Readability.js").read()
